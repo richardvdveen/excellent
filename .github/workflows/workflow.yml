@@ -29,7 +29,7 @@ jobs:
           with:
               push: true
               tags: |
-                  europe-west4-docker.pkg.dev/excellent-366409/excellent/main-$GITHUB_SHA:latest
+                  europe-west4-docker.pkg.dev/excellent-366409/excellent/main:latest
         
     terraform:
         name: "Terraform"
