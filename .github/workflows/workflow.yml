@@ -28,6 +28,7 @@ jobs:
           uses: docker/build-push-action@v2
           with:
               push: true
+              target: production
               tags: |
                   europe-west4-docker.pkg.dev/excellent-366409/excellent/main:latest
         
@@ -54,6 +55,6 @@ jobs:
               GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
 
         - name: Terraform Apply
-          run: terraform apply -auto-approve
+          run: terraform apply -auto-approve -replace
           env: 
               GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
