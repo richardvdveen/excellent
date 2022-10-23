@@ -15,7 +15,7 @@ jobs:
           uses: actions/checkout@v2
 
         - name: Setup Google CLI
-          uses: GoogleCloudPlatform/github-actions/setup-gcloud@main
+          uses: google-github-actions/setup-gcloud@v0
           with:
             service_account_key: ${{ secrets.GOOGLE_CREDENTIALS }}
             project_id: "excellent-366409"
