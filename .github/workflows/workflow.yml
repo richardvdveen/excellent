@@ -14,25 +14,22 @@ jobs:
         - name: Checkout
           uses: actions/checkout@v2
 
-        - name: Google Auth
-          uses: 'google-github-actions/auth@v0'
+        - name: Login to GAR
+          uses: docker/login-action@v2
           with:
-               credentials_json: ${{ secrets.GOOGLE_CREDENTIALS }}
+              registry: europe-west4-docker.pkg.dev
+              username: _json_key
+              password: ${{ secrets.GOOGLE_CREDENTIALS }}
 
         - name: Setup Google CLI
           uses: google-github-actions/setup-gcloud@v0
 
-        - name: Build Image
-          run: |-
-              docker build -t eu.gcr.io/excellent-366409:$GITHUB_SHA .
-
-        - name: Configure Docker
-          run: |
-              gcloud auth configure-docker europe-west4-docker .pkg.dev
-
-        - name: Push Image
-          run: |-
-              docker push europe-west4-docker.pkg.dev/excellent-366409/excellent/main:$GITHUB_SHA
+        - name: Build and Push Image
+          uses: docker/build-push-action@v2
+          with:
+              push: true
+              tags: |
+                  europe-west4-docker.pkg.dev/excellent-366409/excellent/main-$GITHUB_SHA:latest
         
     terraform:
         name: "Terraform"
