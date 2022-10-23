@@ -10,6 +10,5 @@ terraform {
 provider "google" {
   project = "excellent-366409"
   region  = "europe-west4"
-  zone    = "europe-west4-a"
 }
 
