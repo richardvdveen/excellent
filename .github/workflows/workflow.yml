@@ -55,6 +55,6 @@ jobs:
               GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
 
         - name: Terraform Apply
-          run: terraform apply -auto-approve -replace
+          run: terraform apply -auto-approve -replace=google_cloud_run_service.run_service
           env: 
               GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}

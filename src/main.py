@@ -1,9 +1,10 @@
 from fastapi import FastAPI
+from fastapi.responses import FileResponse
 
 app = FastAPI()
 
 
 @app.get("/")
 def read_root():
-    return {"Hello": "World"}
+    return FileResponse("mock.xlsx")
 
