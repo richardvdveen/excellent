@@ -24,7 +24,7 @@ jobs:
 
         - name: Build Image
           run: |-
-              docker build -t eu.gcr.io/excellent-366409:GITHUB_SHA .
+              docker build -t eu.gcr.io/excellent-366409:$GITHUB_SHA .
 
         - name: Configure Docker
           run: |
